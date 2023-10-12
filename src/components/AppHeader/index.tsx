@@ -1,11 +1,21 @@
-import { Text, View } from "react-native";
+import logo from "@/assets/logo.png";
+import * as S from "./styles";
 
-export function AppHeader() {
+type Props = {
+  showBackIcon?: boolean;
+};
+
+export function AppHeader({ showBackIcon = false }: Props) {
   return (
     <>
-      <View>
-        <Text></Text>
-      </View>
+      <S.Container>
+        {showBackIcon && (
+          <S.BackButton>
+            <S.BackIcon />
+          </S.BackButton>
+        )}
+        <S.Logo source={logo} />
+      </S.Container>
     </>
   );
 }
