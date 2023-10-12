@@ -1,11 +1,12 @@
-import { Text, View } from "react-native";
+import * as Styled from "./styles";
+// import { Container, Title } from "./styles"; - Components are clearner this way
 
 export function Groups() {
-    return (
-        <>
-            <View>
-                <Text>I'm the 'Groups' Screen</Text>
-            </View>
-        </>
-    )
+  return (
+    <>
+      <Styled.Container>
+        <Styled.Title>I'm the 'Groups' Screen</Styled.Title>
+      </Styled.Container>
+    </>
+  );
 }
