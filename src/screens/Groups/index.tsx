@@ -12,7 +12,10 @@ import { FlatList } from "react-native";
 import * as S from "./styles";
 
 export function Groups() {
-  const [groups, setGroups] = React.useState<string[]>([]);
+  const [groups, setGroups] = React.useState<string[]>([
+    "Ignite - React Native",
+    "Ignite - React",
+  ]);
 
   return (
     <>
@@ -25,7 +28,7 @@ export function Groups() {
         <FlatList
           data={groups}
           keyExtractor={(item) => item}
-          renderItem={() => <GroupCards />}
+          renderItem={({ item }) => <GroupCards title={item} />}
           ListEmptyComponent={() => (
             <AppEmptyList.root>
               <AppEmptyList.subtitle subtitle="Que tal criar uma?" />
