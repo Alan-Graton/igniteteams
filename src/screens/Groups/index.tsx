@@ -21,18 +21,13 @@ export function Groups() {
     <>
       <S.Container>
         <AppHeader />
-        <AppHighlight.root>
-          <AppHighlight.title title="Turmas" />
-          <AppHighlight.subtitle subtitle="Jogue com a sua Turma" />
-        </AppHighlight.root>
+        <AppHighlight title="Turmas" subtitle="Jogue com a sua Turma" />
         <FlatList
           data={groups}
           keyExtractor={(item) => item}
           renderItem={({ item }) => <GroupCards title={item} />}
           ListEmptyComponent={() => (
-            <AppEmptyList.root>
-              <AppEmptyList.subtitle subtitle="Que tal criar uma?" />
-            </AppEmptyList.root>
+            <AppEmptyList subtitle="Que tal criar uma?" />
           )}
         />
         <AppButton text="Criar Turma" />
