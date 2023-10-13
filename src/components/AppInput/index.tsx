@@ -1,5 +1,15 @@
-import * as S from "./styles";
+import { TextInputProps } from "react-native";
 
-export function AppInput() {
-  return <S.Container />;
+import * as S from "./styles";
+import { useTheme } from "styled-components/native";
+
+export function AppInput({ ...rest }: TextInputProps) {
+  const { COLORS } = useTheme();
+  return (
+    <S.Container
+      placeholder="Nome da Turma"
+      placeholderTextColor={COLORS.GRAY_300}
+      {...rest}
+    />
+  );
 }
