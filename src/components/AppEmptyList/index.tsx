@@ -1,11 +1,15 @@
-import { AppEmptyListIcon } from "./AppEmptyListIcon";
-import { AppEmptyListRoot } from "./AppEmptyListRoot";
-import { AppEmptyListSubTitle } from "./AppEmptyListSubTitle";
-import { AppEmptyListTitle } from "./AppEmptyListTitle";
+import * as S from "./styles";
 
-export const AppEmptyList = {
-  root: AppEmptyListRoot,
-  icon: AppEmptyListIcon,
-  title: AppEmptyListTitle,
-  subtitle: AppEmptyListSubTitle,
-};
+interface Props {
+  title?: string;
+  subtitle?: string;
+}
+
+export function AppEmptyList({ title, subtitle }: Props) {
+  return (
+    <S.Container>
+      <S.Title>{title}</S.Title>
+      <S.Subtitle>{subtitle}</S.Subtitle>
+    </S.Container>
+  );
+}

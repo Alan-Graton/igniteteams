@@ -1,11 +1,15 @@
-import { AppHighlightRoot } from "./AppHighlightRoot";
-import { AppHighlightSubtTitle } from "./AppHighlightSubTitle";
-import { AppHighlightTitle } from "./AppHighlightTitle";
-import { AppHighlightIcon } from "./AppHightlightIcon";
+import * as S from "./styles";
 
-export const AppHighlight = {
-  root: AppHighlightRoot,
-  icon: AppHighlightIcon,
-  title: AppHighlightTitle,
-  subtitle: AppHighlightSubtTitle,
-};
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+export function AppHighlight({ title, subtitle }: Props) {
+  return (
+    <S.Container>
+      <S.Title>{title}</S.Title>
+      <S.Subtitle>{subtitle}</S.Subtitle>
+    </S.Container>
+  );
+}
