@@ -1,7 +1,19 @@
-import * as S from "./styles"
+import { AppIconButton } from "../AppIconButton";
 
-export function PlayerCard() {
-    return (
-        <S.Container></S.Container>
-    )
+import * as S from "./styles";
+
+type Props = {
+  name: string;
+};
+
+export function PlayerCard({ name }: Props) {
+  return (
+    <S.Container>
+      <S.Form>
+        <S.Icon />
+        <S.PlayerName>{name}</S.PlayerName>
+      </S.Form>
+      <AppIconButton icon="close" type="SECONDARY" />
+    </S.Container>
+  );
 }
