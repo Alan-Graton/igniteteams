@@ -15,8 +15,9 @@ export const Container = styled(TouchableOpacity)`
   height: 56px;
 
   justify-content: center;
+  align-items: center;
 
-  margin-right: 12px;
+  margin-left: 12px;
 `;
 
 export const Icon = styled(MaterialIcons).attrs<Props>(({ theme, type }) => ({

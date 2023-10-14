@@ -3,6 +3,11 @@ import styled, { css } from "styled-components/native";
 import { TextInput } from "react-native";
 
 export const Container = styled(TextInput)`
+  flex: 1;
+
+  min-height: 56px;
+  max-height: 56px;
+
   ${({ theme }) => css`
     color: ${theme.COLORS.WHITE};
     font-family: ${theme.FONT_FAMILY.REGULAR};
@@ -11,10 +16,6 @@ export const Container = styled(TextInput)`
     background-color: ${theme.COLORS.GRAY_700};
   `}
 
-  width: 100%;
-  min-height: 56px;
-  max-height: 56px;
-
-  padding: 12px;
   border-radius: 6px;
+  padding: 16px;
 `;

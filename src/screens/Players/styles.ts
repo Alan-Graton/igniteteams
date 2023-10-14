@@ -14,7 +14,9 @@ export const Form = styled.View`
   width: 100%;
 
   flex-direction: row;
-  justify-content: center;
+  align-items: center;
+
+  border-radius: 6px;
 
   background-color: ${({ theme }) => theme.COLORS.GRAY_700};
 `;
