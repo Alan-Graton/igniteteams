@@ -1,5 +1,4 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 // Screen Components
 import { GroupCards } from "@/components/GroupCards";
 // Application Components
@@ -19,21 +18,19 @@ export function Groups() {
   ]);
 
   return (
-    <SafeAreaView>
-      <S.Container>
-        <AppHeader />
-        <AppHighlight title="Turmas" subtitle="Jogue com a sua Turma" />
-        <FlatList
-          data={groups}
-          keyExtractor={(item) => item}
-          renderItem={({ item }) => <GroupCards title={item} />}
-          contentContainerStyle={groups.length === 0 && { flex: 1 }}
-          ListEmptyComponent={() => (
-            <AppEmptyList subtitle="Que tal criar uma?" />
-          )}
-        />
-        <AppButton text="Criar Turma" />
-      </S.Container>
-    </SafeAreaView>
+    <S.Container>
+      <AppHeader />
+      <AppHighlight title="Turmas" subtitle="Jogue com a sua Turma" />
+      <FlatList
+        data={groups}
+        keyExtractor={(item) => item}
+        renderItem={({ item }) => <GroupCards title={item} />}
+        contentContainerStyle={groups.length === 0 && { flex: 1 }}
+        ListEmptyComponent={() => (
+          <AppEmptyList subtitle="Que tal criar uma?" />
+        )}
+      />
+      <AppButton text="Criar Turma" />
+    </S.Container>
   );
 }

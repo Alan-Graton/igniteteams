@@ -1,5 +1,4 @@
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 // Application Components
 import { AppButton } from "@/components/AppButton";
 import { AppHeader } from "@/components/AppHeader";
@@ -14,19 +13,17 @@ export function Players() {
   const [players, setPlayers] = React.useState<string[]>([]);
 
   return (
-    <SafeAreaView>
-      <S.Container>
-        <AppHeader showBackIcon />
-        <AppHighlight
-          title="Nome da Turma"
-          subtitle="Adicione a galera e separe os times"
-        />
-        <S.Form>
-          <AppInput placeholder="Nome do Participante" />
-          <AppIconButton icon="add" />
-        </S.Form>
-        <AppButton text="Remover Turma" type="SECONDARY" />
-      </S.Container>
-    </SafeAreaView>
+    <S.Container>
+      <AppHeader showBackIcon />
+      <AppHighlight
+        title="Nome da Turma"
+        subtitle="Adicione a galera e separe os times"
+      />
+      <S.Form>
+        <AppInput placeholder="Nome do Participante" />
+        <AppIconButton icon="add" />
+      </S.Form>
+      <AppButton text="Remover Turma" type="SECONDARY" />
+    </S.Container>
   );
 }
