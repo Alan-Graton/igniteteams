@@ -26,6 +26,7 @@ export function Groups() {
           data={groups}
           keyExtractor={(item) => item}
           renderItem={({ item }) => <GroupCards title={item} />}
+          contentContainerStyle={groups.length === 0 && { flex: 1 }}
           ListEmptyComponent={() => (
             <AppEmptyList subtitle="Que tal criar uma?" />
           )}
