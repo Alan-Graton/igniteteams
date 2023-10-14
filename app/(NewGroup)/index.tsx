@@ -6,7 +6,7 @@ import { AppButton } from "@/components/AppButton";
 // Styles
 import * as S from "./styles";
 
-export function NewGroup() {
+export default function NewGroup() {
   return (
     <S.Container>
       <AppHeader showBackIcon />

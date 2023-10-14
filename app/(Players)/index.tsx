@@ -13,7 +13,7 @@ import { AppEmptyList } from "@/components/AppEmptyList";
 // Styles
 import * as S from "./styles";
 
-export function Players() {
+export default function Players() {
   const [selectedTeam, setSelectedTeam] = React.useState<string>("");
   const [players, setPlayers] = React.useState<string[]>([
     "Alan Graton",

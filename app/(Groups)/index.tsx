@@ -10,12 +10,15 @@ import { AppEmptyList } from "@/components/AppEmptyList";
 import { FlatList } from "react-native";
 // Styles
 import * as S from "./styles";
+import { Link, useNavigation } from "expo-router";
 
-export function Groups() {
+export default function Groups() {
   const [groups, setGroups] = React.useState<string[]>([
     "Ignite - React Native",
     "Ignite - React",
   ]);
+
+  const navigation = useNavigation();
 
   return (
     <S.Container>
@@ -24,13 +27,25 @@ export function Groups() {
       <FlatList
         data={groups}
         keyExtractor={(item) => item}
-        renderItem={({ item }) => <GroupCards title={item} />}
+        renderItem={({ item }) => (
+          <GroupCards
+            title={item}
+            onPress={() => {
+              navigation.navigate("(Players)");
+            }}
+          />
+        )}
         contentContainerStyle={groups.length === 0 && { flex: 1 }}
         ListEmptyComponent={() => (
           <AppEmptyList subtitle="Que tal criar uma?" />
         )}
       />
-      <AppButton text="Criar Turma" />
+      <AppButton
+        text="Criar Turma"
+        onPress={() => {
+          navigation.navigate("(NewGroup)");
+        }}
+      />
     </S.Container>
   );
 }
