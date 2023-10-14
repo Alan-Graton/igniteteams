@@ -1,4 +1,5 @@
 import React from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 // Screen Components
 import { GroupCards } from "@/components/GroupCards";
 // Application Components
@@ -18,7 +19,7 @@ export function Groups() {
   ]);
 
   return (
-    <>
+    <SafeAreaView>
       <S.Container>
         <AppHeader />
         <AppHighlight title="Turmas" subtitle="Jogue com a sua Turma" />
@@ -33,6 +34,6 @@ export function Groups() {
         />
         <AppButton text="Criar Turma" />
       </S.Container>
-    </>
+    </SafeAreaView>
   );
 }
