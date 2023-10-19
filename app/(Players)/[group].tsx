@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList } from "react-native";
+import { useLocalSearchParams } from "expo-router";
 
 import { getAllPlayers } from "@/storage/Players/getAllPlayers";
 import { PlayersDTO } from "@/storage/Players/PlayersDTO";
@@ -17,8 +18,11 @@ import { AppEmptyList } from "@/components/AppEmptyList";
 import * as S from "./styles";
 
 export default function Players() {
-  const [selectedTeam, setSelectedTeam] = React.useState<string>("Team A");
-  const [players, setPlayers] = React.useState<PlayersDTO[]>([]);
+  const localSearchParams = useLocalSearchParams<{ group: string }>();
+
+  // const [group, setGroup] = useState<string>(localSearchParams.group);
+  const [selectedTeam, setSelectedTeam] = useState<string>("Team A");
+  const [players, setPlayers] = useState<PlayersDTO[]>([]);
 
   async function handleFetchPlayers() {
     const allPlayers = await getAllPlayers();
@@ -34,7 +38,7 @@ export default function Players() {
     <S.Container>
       <AppHeader showBackIcon />
       <AppHighlight
-        title="Nome da Turma"
+        title={localSearchParams.group}
         subtitle="Adicione a galera e separe os times"
       />
       <S.Form>

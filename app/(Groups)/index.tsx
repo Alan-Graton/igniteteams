@@ -42,7 +42,7 @@ export default function Groups() {
           <GroupCards
             title={item}
             onPress={() => {
-              navigation.navigate("(Players)");
+              navigation.navigate(`(Players)/${item}`);
             }}
           />
         )}
