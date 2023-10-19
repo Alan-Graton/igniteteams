@@ -1,24 +1,35 @@
 import React from "react";
-// Screen Components
+import { FlatList } from "react-native";
+
+import { useFocusEffect, useNavigation } from "expo-router";
+
+import { getAllGroups } from "@/storage/Groups/getAllGroups";
+
 import { GroupCards } from "@/components/GroupCards";
-// Application Components
+
 import { AppHeader } from "@/components/AppHeader";
 import { AppHighlight } from "@/components/AppHighlight";
 import { AppButton } from "@/components/AppButton";
 import { AppEmptyList } from "@/components/AppEmptyList";
-// Native
-import { FlatList } from "react-native";
-// Styles
+
 import * as S from "./styles";
-import { Link, useNavigation } from "expo-router";
 
 export default function Groups() {
-  const [groups, setGroups] = React.useState<string[]>([
-    "Ignite - React Native",
-    "Ignite - React",
-  ]);
+  const [groups, setGroups] = React.useState<string[]>([]);
 
   const navigation = useNavigation();
+
+  async function handleFetchGroups() {
+    const allGroups = await getAllGroups();
+
+    setGroups((prev) => (prev = allGroups));
+  }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      handleFetchGroups();
+    }, [])
+  );
 
   return (
     <S.Container>

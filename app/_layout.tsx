@@ -1,4 +1,4 @@
-import { Slot, Stack } from "expo-router";
+import { Stack } from "expo-router";
 import { ThemeProvider } from "styled-components/native";
 import {
   useFonts,
