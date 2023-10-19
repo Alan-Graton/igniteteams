@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { FlatList } from "react-native";
-// Screen Components
+import { useLocalSearchParams } from "expo-router";
+
+import { getAllPlayers } from "@/storage/Players/getAllPlayers";
+import { PlayersDTO } from "@/storage/Players/PlayersDTO";
+
 import { PlayerCard } from "@/components/PlayerCard";
-// Application Components
+
 import { AppButton } from "@/components/AppButton";
 import { AppHeader } from "@/components/AppHeader";
 import { AppHighlight } from "@/components/AppHighlight";
@@ -10,27 +14,39 @@ import { AppInput } from "@/components/AppInput";
 import { AppIconButton } from "@/components/AppIconButton";
 import { AppFilter } from "@/components/AppFilter";
 import { AppEmptyList } from "@/components/AppEmptyList";
-// Styles
+
 import * as S from "./styles";
 
-export function Players() {
-  const [selectedTeam, setSelectedTeam] = React.useState<string>("");
-  const [players, setPlayers] = React.useState<string[]>([
-    "Alan Graton",
-    "Débora Graton",
-    "Marcos de Brito",
-    "Vivian Graton",
-  ]);
+export default function Players() {
+  const localSearchParams = useLocalSearchParams<{ group: string }>();
+
+  // const [group, setGroup] = useState<string>(localSearchParams.group);
+  const [selectedTeam, setSelectedTeam] = useState<string>("Team A");
+  const [players, setPlayers] = useState<PlayersDTO[]>([]);
+
+  async function handleFetchPlayers() {
+    const allPlayers = await getAllPlayers();
+
+    setPlayers((prev) => (prev = allPlayers));
+  }
+
+  React.useEffect(() => {
+    handleFetchPlayers();
+  }, [selectedTeam]);
 
   return (
     <S.Container>
       <AppHeader showBackIcon />
       <AppHighlight
-        title="Nome da Turma"
+        title={localSearchParams.group}
         subtitle="Adicione a galera e separe os times"
       />
       <S.Form>
-        <AppInput placeholder="Nome do Participante" />
+        <AppInput
+          placeholder="Nome do Participante"
+          autoCorrect={false}
+          autoComplete="off"
+        />
         <AppIconButton icon="add" />
       </S.Form>
 
@@ -53,8 +69,8 @@ export function Players() {
 
       <FlatList
         data={players}
-        renderItem={({ item }) => <PlayerCard name={item} />}
-        keyExtractor={(item) => item}
+        renderItem={({ item }) => <PlayerCard name={item.name} />}
+        keyExtractor={(item) => item.name}
         ListEmptyComponent={() => (
           <AppEmptyList subtitle="Não há pessoas nesse time" />
         )}
